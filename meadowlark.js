@@ -1,5 +1,6 @@
 const express = require('express')
 const expressHandlebars = require('express-handlebars')
+const fortune = require('./lib/fortune')
 
 const app = express()
 
@@ -20,7 +21,7 @@ app.get('/', (req, res) => res.render('home'))
 // custom about with random fortune cookie
 app.get('/about', (req, res) => {
   const randomFortune = fortunes[Math.floor(Math.random()*fortunes.length)]
-  res.render('about', { fortune: randomFortune })
+  res.render('about', {  fortune: fortune.getFortune()  })
 })
 
 
